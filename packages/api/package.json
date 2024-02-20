@@ -1,0 +1,16 @@
+{
+  "name": "@backoffice/api",
+  "version": "0.1.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "npm run test"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "fastify": "^4.26.1"
+  }
+}

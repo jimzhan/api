@@ -1,0 +1,19 @@
+{
+  "name": "@backoffice/db",
+  "version": "0.1.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava"
+
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "ulidx": "^2.3.0"
+  },
+  "devDependencies": {
+    "ava": "^6.1.1"
+  }
+}
