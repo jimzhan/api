@@ -1,7 +1,7 @@
 export default {
   verbose: true,
   files: [
-    '*.spec.js'
+    '**/*.spec.js'
   ],
   concurrency: 5,
   failFast: true,
@@ -10,7 +10,5 @@ export default {
     NODE_ENV: 'test'
   },
   nodeArguments: [
-    '--experimental-modules',
-    '--experimental-specifier-resolution=node'
   ]
 }

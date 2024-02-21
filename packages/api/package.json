@@ -6,13 +6,17 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint --ext .js --fix src",
-    "start": "cross-env NODE_CONFIG_DIR=etc node src/index.js",
-    "test": "cross-env NODE_CONFIG_DIR=etc npm run test"
+    "start": "node src/index.js",
+    "test": "cross-env NODE_ENV=test ava"
   },
   "author": "",
   "license": "Apache-2.0",
   "dependencies": {
     "@backoffice/core": "*",
-    "fastify": "^4.26.1"
+    "config": "^3.3.11",
+    "fastify": "^4.26.1",
+    "knex": "^3.1.0",
+    "pg": "^8.11.3",
+    "ulidx": "^2.3.0"
   }
 }

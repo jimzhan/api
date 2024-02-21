@@ -1,6 +1,7 @@
+import config from 'config'
 import server from './server.js'
 
 server.listen({
-  host: '0.0.0.0',
-  port: 8000
+  host: config.get('host'),
+  port: config.get('port')
 })

@@ -12,7 +12,7 @@
   },
   "scripts": {
     "lint": "yarn workspaces run lint",
-    "test": "npm run test"
+    "test": "yarn workspaces run test"
   },
   "repository": {
     "type": "git",
