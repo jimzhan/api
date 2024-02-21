@@ -1,5 +1,6 @@
 import Fastify from 'fastify'
+import logger from './logger.js'
 
-const server = Fastify()
+const server = Fastify({ logger })
 
 export default server

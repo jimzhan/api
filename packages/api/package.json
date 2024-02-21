@@ -5,12 +5,14 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index.js",
-    "test": "npm run test"
+    "lint": "eslint --ext .js --fix src",
+    "start": "cross-env NODE_CONFIG_DIR=etc node src/index.js",
+    "test": "cross-env NODE_CONFIG_DIR=etc npm run test"
   },
   "author": "",
   "license": "Apache-2.0",
   "dependencies": {
+    "@backoffice/core": "*",
     "fastify": "^4.26.1"
   }
 }

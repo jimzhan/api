@@ -1,0 +1,21 @@
+{
+  "verbose": true,
+  "restartable": "rs",
+  "watch": [
+    "src",
+    "config"
+  ],
+  "ext": "cjs,js",
+  "ignore": [
+    "*.spec.js",
+    "*.test.js",
+    "**/fixtures/**"
+  ],
+  "execMap": {
+    "js": "node --inspect"
+  },
+  "env": {
+    "NODE_DEBUG": 9229,
+    "NODE_ENV": "development"
+  }
+}
