@@ -9,17 +9,21 @@ module.exports = {
       port: 5432,
       user: 'postgres',
       database: 'postgres',
-      password: 'postgres'
+      password: 'postgres',
     },
     pool: {
       min: 5,
-      max: 10
+      max: 10,
     },
     migrations: {
-      directory: 'migrations'
+      directory: 'migrations',
     },
     seeds: {
-      directory: 'seeds'
-    }
-  }
+      directory: 'seeds',
+    },
+  },
+  cookie: {
+    name: 'sid',
+  },
+  secret: '2<_"yJs++GjgikKg4kq&xcBq(%>$k>\'6<>!R9*2[XzwylP{fzpZHCKB8j)cCFb',
 }
