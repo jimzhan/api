@@ -1,18 +1,14 @@
 {
-  "private": true,
+  "type": "module",
   "name": "backoffice",
-  "version": "0.1.0",
+  "version": "24.2.0",
   "description": "An opinionated API application boilerplate for Backoffice",
   "main": "index.js",
-  "type": "module",
-  "workspaces": {
-    "packages": [
-      "packages/*"
-    ]
-  },
   "scripts": {
-    "lint": "yarn workspaces run lint",
-    "test": "yarn workspaces run test"
+    "migrate": "knex migrate:latest --debug",
+    "lint": "eslint --ext .js --fix src",
+    "start": "node src/index.js",
+    "test": "cross-env NODE_ENV=test ava"
   },
   "repository": {
     "type": "git",
@@ -32,14 +28,18 @@
   "homepage": "https://github.com/jimzhan/api#readme",
   "devDependencies": {
     "ava": "^6.1.1",
-    "eslint": "^8.56.0",
-    "eslint-config-standard": "^17.1.0",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-n": "^16.6.2",
-    "eslint-plugin-promise": "^6.1.1"
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb-base": "15.0.0",
+    "eslint-plugin-import": "^2.25.2",
+    "supertest": "^6.3.4"
   },
   "dependencies": {
+    "config": "^3.3.11",
     "cross-env": "^7.0.3",
+    "fastify": "^4.26.1",
+    "knex": "^3.1.0",
+    "pg": "^8.11.3",
+    "ulidx": "^2.3.0",
     "winston": "^3.11.0"
   }
 }

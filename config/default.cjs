@@ -11,6 +11,10 @@ module.exports = {
       database: 'postgres',
       password: 'postgres'
     },
+    pool: {
+      min: 5,
+      max: 10
+    },
     migrations: {
       directory: 'migrations'
     },
