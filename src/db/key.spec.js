@@ -2,7 +2,7 @@ import test from 'ava'
 import { isValid } from 'ulidx'
 import Key from './key.js'
 
-test('db.Key()', t => {
+test('db.Key()', (t) => {
   const id = Key()
   t.true(isValid(id))
   t.is(id.length, 26)

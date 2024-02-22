@@ -6,6 +6,8 @@
     "sourceType": "module"
   },
   "rules": {
-    "semi": 0
+    "semi": 0,
+    "import/extensions": [ "error", "ignorePackages" ],
+    "import/no-unresolved": 0
   }
 }
