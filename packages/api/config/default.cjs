@@ -4,6 +4,18 @@ module.exports = {
   port: 8000,
   db: {
     client: 'pg',
-    url: process.env.DB_URL
+    connection: {
+      host: '127.0.0.1',
+      port: 5432,
+      user: 'postgres',
+      database: 'postgres',
+      password: 'postgres'
+    },
+    migrations: {
+      directory: 'migrations'
+    },
+    seeds: {
+      directory: 'seeds'
+    }
   }
 }

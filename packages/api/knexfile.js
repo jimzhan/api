@@ -1,14 +1,3 @@
-const config = require('config')
+import config from 'config'
 
-export default {
-  client: config.get('db.client'),
-  connection: {
-    connectionString: config.get('db.url')
-  },
-  migrations: {
-    directory: 'migrations'
-  },
-  seeds: {
-    directory: 'seeds'
-  }
-}
+export default config.db
