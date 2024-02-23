@@ -1,6 +1,6 @@
 # API Application Boilerplate
-An opinionated API application startup kit with set of best practices.
 
+An opinionated API application startup kit with set of best practices.
 
 ## Foundations
 
@@ -9,7 +9,6 @@ An opinionated API application startup kit with set of best practices.
 - **Test Runner** [Ava](https://github.com/avajs/ava)
 - **SCA** [ESLint](https://eslint.org/) + [Airbnb](https://github.com/airbnb/javascript)
 - **Logger** [Winston](https://github.com/winstonjs/winston)
-
 
 ## TODOs
 

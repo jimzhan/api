@@ -1,8 +1,6 @@
 export default {
   verbose: true,
-  files: [
-    '**/*.spec.js',
-  ],
+  files: ['**/*.spec.js'],
   concurrency: 5,
   failFast: true,
   failWithoutAssertions: false,

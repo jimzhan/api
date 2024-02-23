@@ -1,16 +1,9 @@
 {
   "verbose": true,
   "restartable": "rs",
-  "watch": [
-    "src",
-    "config"
-  ],
+  "watch": ["src", "config"],
   "ext": "cjs,js",
-  "ignore": [
-    "*.spec.js",
-    "*.test.js",
-    "**/fixtures/**"
-  ],
+  "ignore": ["*.spec.js", "*.test.js", "**/fixtures/**"],
   "execMap": {
     "js": "node --inspect"
   },

@@ -17,7 +17,7 @@ server.register(SecureSession, {
 server.register(underPressure, {
   async healthCheck() {
     // TODO: Add database connection check
-    return true;
+    return true
   },
   message: 'Under Pressure 😯',
   exposeStatusRoute: '/status',
