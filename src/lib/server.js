@@ -8,7 +8,6 @@ const server = Fastify({ logger })
 
 server.register(SecureSession, {
   key: config.secret,
-  sessionName: 'session',
   cookieName: config.cookie.name,
   cookie: {
     path: '/',
