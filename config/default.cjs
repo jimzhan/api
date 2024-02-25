@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
   debug: true,
   host: '0.0.0.0',
@@ -16,14 +18,14 @@ module.exports = {
       max: 10,
     },
     migrations: {
-      directory: 'migrations',
+      directory: path.join('db', 'migrations'),
     },
     seeds: {
-      directory: 'seeds',
+      directory: path.join('db', 'seeds'),
     },
   },
   cookie: {
     name: 'sid',
   },
-  secret: '2<_"yJs++GjgikKg4kq&xcBq(%>$k>\'6<>!R9*2[XzwylP{fzpZHCKB8j)cCFb',
+  secret: Buffer.from('2<_"yJs++GjgikKg4kq&xcBq(%>$k>\'6<>!R9*2[XzwylP{fzpZHCKB8j)cCF', 'utf8'),
 }

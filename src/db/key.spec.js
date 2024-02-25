@@ -1,10 +1,10 @@
-import test from 'ava'
+import { expect, test } from 'vitest'
 import { isValid } from 'ulidx'
 import Key from './key.js'
 
-test('db.Key()', (t) => {
+test('db.Key()', () => {
   const id = Key()
-  t.true(isValid(id))
-  t.is(id.length, 26)
-  t.true(Key() > id)
+  expect(isValid(id)).toBeTruthy()
+  expect(id.length).toBe(26)
+  expect(Key() > id).toBe(true)
 })

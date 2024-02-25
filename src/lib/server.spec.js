@@ -1,13 +1,14 @@
-import test from 'ava'
+import { afterAll, expect, test } from 'vitest'
 import supertest from 'supertest'
 import server from './server.js'
 
-test('server()', async (t) => {
-  t.teardown(() => {
-    server.close()
-  })
+test('server()', async () => {
   await server.ready()
   const response = await supertest(server.server).get('/status')
-  t.is(response.statusCode, 200)
-  t.deepEqual(response.body, { status: 'ok' })
+  expect(response.statusCode).toBe(200)
+  expect(response.body).toEqual({ status: 'ok' })
+})
+
+afterAll(() => {
+  server.close()
 })
