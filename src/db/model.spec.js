@@ -23,7 +23,7 @@ describe('db', () => {
   beforeEach(async () => {
     await Sandbox.query().insert({
       id: Key(),
-      username,
+      username
     })
   })
 

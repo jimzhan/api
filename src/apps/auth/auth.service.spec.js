@@ -1,10 +1,4 @@
-import {
-  afterEach,
-  beforeEach,
-  describe,
-  it,
-  expect,
-} from 'vitest'
+import { afterEach, beforeEach, describe, it, expect } from 'vitest'
 import Key from '../../db/key.js'
 import { User } from './auth.model.js'
 import { authenticate } from './auth.service.js'
@@ -17,7 +11,7 @@ describe('auth.service.spec.js#authenticate()', () => {
   beforeEach(async () => {
     await User.query().insert({
       username,
-      password: await crypto.encrypt(password),
+      password: await crypto.encrypt(password)
     })
   })
 
@@ -35,7 +29,7 @@ describe('auth.service.spec.js#authenticate()', () => {
   it('authenticate() with wrong username', async () => {
     const login = await authenticate({
       username: 'wrong-user-name',
-      password,
+      password
     })
     expect(login.user).toBeNull()
   })
@@ -43,7 +37,7 @@ describe('auth.service.spec.js#authenticate()', () => {
   it('authenticate() with wrong password', async () => {
     const login = await authenticate({
       username,
-      password: 'wrongpassword',
+      password: 'wrongpassword'
     })
     expect(login.user).toBeFalsy()
     expect(login.authenticated).toBeFalsy()

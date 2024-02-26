@@ -6,5 +6,5 @@ server.register(auth)
 
 server.listen({
   host: config.host,
-  port: config.port,
+  port: config.port
 })

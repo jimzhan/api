@@ -12,7 +12,7 @@ const logger = winston.createLogger({
     warn: 2,
     info: 3,
     trace: 4,
-    debug: 5,
+    debug: 5
   },
   level: 'info',
   format: winston.format.json(),
@@ -21,12 +21,12 @@ const logger = winston.createLogger({
     new winston.transports.Console(),
     new winston.transports.File({
       level: 'error',
-      filename: `${path.join(basedir, 'error.log')}`,
+      filename: `${path.join(basedir, 'error.log')}`
     }),
     new winston.transports.File({
-      filename: `${path.join(basedir, 'combined.log')}`,
-    }),
-  ],
+      filename: `${path.join(basedir, 'combined.log')}`
+    })
+  ]
 })
 
 export default logger

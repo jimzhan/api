@@ -1,17 +1,13 @@
 module.exports = {
   root: true,
-  extends: ['airbnb-base', 'prettier'],
+  extends: ['standard'],
   parserOptions: {
     ecmaVersion: 'latest',
-    sourceType: 'module',
+    sourceType: 'module'
   },
-  plugins: ['prettier'],
-  rules: {
-    'prettier/prettier': ['error'],
-    semi: 0,
-    'import/extensions': ['error', 'ignorePackages'],
-    'import/prefer-default-export': 'off',
-    'import/no-unresolved': 0,
-  },
+  //  plugins: ['prettier'],
   ignorePatterns: ['node_modules/*'],
+  rules: {
+    'space-before-function-paren': 0
+  }
 }

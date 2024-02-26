@@ -18,7 +18,7 @@ server.register(underPressure, {
   },
   message: 'Under Pressure 😯',
   exposeStatusRoute: '/status',
-  healthCheckInterval: 5000,
+  healthCheckInterval: 5000
 })
 
 export default server
