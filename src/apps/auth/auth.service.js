@@ -9,8 +9,8 @@ import * as crypto from '../../core/crypto.js'
  * @returns {Object} { user, authenticated }
  */
 export const authenticate = async (username, password) => {
-  const user = await User.query().findOne({ username })
   const login = { user: null, authenticated: false }
+  const user = await User.query().findOne({ username })
 
   if (user) {
     const authenticated = await crypto.compare(password, user.password)
