@@ -1,20 +1,8 @@
-import config from 'config'
 import Fastify from 'fastify'
-import SecureSession from '@fastify/secure-session'
 import underPressure from '@fastify/under-pressure'
 import logger from './logger.js'
 
 const server = Fastify({ logger })
-
-/*
-server.register(SecureSession, {
-  key: config.secret,
-  cookieName: config.cookie.name,
-  cookie: {
-    path: '/',
-  },
-})
-*/
 
 server.register(underPressure, {
   async healthCheck() {
