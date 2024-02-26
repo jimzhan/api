@@ -10,8 +10,8 @@
     "migrate:down": "knex migrate:down",
     "migrate:rollback": "knex migrate:rollback",
     "seed": "knex seed:run",
-    "format": "prettier --write src",
-    "lint": "eslint --fix src",
+    "lint": "prettier --write src && eslint src",
+    "lint:fix": "yarn lint --fix",
     "start": "node src/index.js",
     "test": "cross-env NODE_ENV=test vitest"
   },
