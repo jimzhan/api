@@ -13,7 +13,7 @@
     "lint": "prettier --write src && eslint src",
     "lint:fix": "yarn lint --fix",
     "start": "node src/index.js",
-    "test": "cross-env NODE_ENV=test vitest run"
+    "test": "cross-env NODE_ENV=test vitest"
   },
   "repository": {
     "type": "git",

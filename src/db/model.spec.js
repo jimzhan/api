@@ -7,8 +7,8 @@ import {
   expect,
   test,
 } from 'vitest'
-import knex from './knex.js'
 import Key from './key.js'
+import knex from './knex.js'
 import Model from './model.js'
 
 class Sandbox extends Model {
@@ -16,8 +16,6 @@ class Sandbox extends Model {
     return Sandbox.name
   }
 }
-
-// Sandbox.knex(knex)
 
 describe('db', () => {
   const tableName = 'Sandbox'

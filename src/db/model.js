@@ -1,8 +1,6 @@
-import knex from 'knex'
 import { Model as BaseModel } from 'objection'
 import Key from './key.js'
-
-BaseModel.knex(knex)
+import knex from './knex.js'
 
 class Model extends BaseModel {
   async $beforeInsert(context) {
@@ -12,5 +10,7 @@ class Model extends BaseModel {
     }
   }
 }
+
+Model.knex(knex)
 
 export default Model
