@@ -6,6 +6,7 @@ import logger from './logger.js'
 
 const server = Fastify({ logger })
 
+/*
 server.register(SecureSession, {
   key: config.secret,
   cookieName: config.cookie.name,
@@ -13,6 +14,7 @@ server.register(SecureSession, {
     path: '/',
   },
 })
+*/
 
 server.register(underPressure, {
   async healthCheck() {

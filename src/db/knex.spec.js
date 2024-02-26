@@ -6,4 +6,4 @@ test('knex', async () => {
   expect(result).not.toBeNull()
 })
 
-afterAll(() => knex.destroy())
+// afterAll(() => knex.destroy())
