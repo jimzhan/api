@@ -10,6 +10,7 @@ module.exports = {
     'prettier/prettier': ['error'],
     semi: 0,
     'import/extensions': ['error', 'ignorePackages'],
+    'import/prefer-default-export': 'off',
     'import/no-unresolved': 0,
   },
   ignorePatterns: ['node_modules/*'],
