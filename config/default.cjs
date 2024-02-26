@@ -14,25 +14,25 @@ module.exports = {
       port: 5432,
       user: 'postgres',
       database: 'postgres',
-      password: 'postgres',
+      password: 'postgres'
     },
     pool: {
       min: 5,
-      max: 10,
+      max: 10
     },
     migrations: {
-      directory: path.join('db', 'migrations'),
+      directory: path.join('db', 'migrations')
     },
     seeds: {
-      directory: path.join('db', 'seeds'),
-    },
+      directory: path.join('db', 'seeds')
+    }
   },
   session: {
     sessionName: 'session',
     cookieName: 'sid',
     key: fs.readFileSync(path.join(__dirname, SecretKey)),
     cookie: {
-      path: '/',
-    },
-  },
+      path: '/'
+    }
+  }
 }

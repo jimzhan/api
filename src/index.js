@@ -1,8 +1,8 @@
 import config from 'config'
 import server from './core/server.js'
-import auth from './apps/auth/index.js'
+import routes from './apps/index.js'
 
-server.register(auth)
+server.register(routes)
 
 server.listen({
   host: config.host,

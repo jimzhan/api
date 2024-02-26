@@ -41,9 +41,11 @@ The following command generate a secret key for `@fastify/secure-session`.
 │   ├── apps
 │   │   ├── auth
 │   │   │   ├── strategies
-│   │   │   │   ├── local.strategy.js
-│   │   │   │   ├── ad.strategy.js
-│   │   │   ├── auth.api.js
-│   │   │   ├── auth.service.js
-│   │   │   └── auth.model.js
+│   │   │   │   ├── auth.db.strategy.js
+│   │   │   │   ├── auth.ad.strategy.js
+│   │   │   ├── auth.api.js                 # Auth API
+│   │   │   ├── auth.service.js             # Auth services
+│   │   │   └── auth.model.js               # Auth models
+│   │   │   └── index.js                    # Auth routes
+│   │   └── index.js                        # Applications' routes
 ```
