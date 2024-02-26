@@ -1,4 +1,7 @@
+const fs = require('fs')
 const path = require('path')
+
+const SecretKey = process.env.SECRET_KEY || 'secret.key'
 
 module.exports = {
   debug: true,
@@ -24,8 +27,12 @@ module.exports = {
       directory: path.join('db', 'seeds'),
     },
   },
-  cookie: {
-    name: 'sid',
+  session: {
+    sessionName: 'session',
+    cookieName: 'sid',
+    key: fs.readFileSync(path.join(__dirname, SecretKey)),
+    cookie: {
+      path: '/',
+    },
   },
-  secret: Buffer.from('2<_"yJs++GjgikKg4kq&xcBq(%>$k>\'6<>!R9*2[XzwylP{fzpZHCKB8j)cCF', 'utf8'),
 }

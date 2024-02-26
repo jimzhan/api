@@ -20,6 +20,13 @@ An opinionated API application startup kit with set of best practices.
 - [ ] Swagger Integration
 
 
+## Bootstrap
+
+The following command generate a secret key for `@fastify/secure-session`.
+
+`yarn genkey`
+
+
 ## Folder Structrure (Grouped by Features)
 
 ```bash
