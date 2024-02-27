@@ -1,11 +1,16 @@
 import config from 'config'
+import { nanoid } from 'nanoid'
 import Fastify from 'fastify'
 import Passport from '@fastify/passport'
 import SecureSession from '@fastify/secure-session'
 import underPressure from '@fastify/under-pressure'
 
 export default async (routes) => {
-  const server = Fastify({ logger: true })
+  const server = Fastify({
+    logger: true,
+    requestIdLogLabel: 'traceId',
+    genReqId: (request) => request.headers['x-trace-id'] || nanoid()
+  })
 
   server.register(SecureSession, config.session)
   server.register(Passport.initialize())

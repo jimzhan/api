@@ -5,6 +5,7 @@ const basedir = 'logs'
 const service = process.env.npm_package_name || 'backoffice'
 
 const logger = winston.createLogger({
+  level: 'info',
   // By default winston has verbose level and does not have trace.
   levels: {
     fatal: 0,
@@ -14,11 +15,11 @@ const logger = winston.createLogger({
     trace: 4,
     debug: 5
   },
-  level: 'info',
   format: winston.format.json(),
-  defaultMeta: { service },
+  // defaultMeta: { service },
   transports: [
     new winston.transports.Console(),
+    /*
     new winston.transports.File({
       level: 'error',
       filename: `${path.join(basedir, 'error.log')}`
@@ -26,6 +27,7 @@ const logger = winston.createLogger({
     new winston.transports.File({
       filename: `${path.join(basedir, 'combined.log')}`
     })
+    */
   ]
 })
 
