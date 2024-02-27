@@ -1,10 +1,12 @@
+import Key from '../../src/db/key.js'
+import { encrypt } from '../../src/core/crypto.js'
+
 const tableName = 'users'
+const password = await encrypt('password')
 
 export const seed = async (knex) => {
   await knex(tableName).del()
   await knex(tableName).insert([
-    { id: 1, colName: 'rowValue1' },
-    { id: 2, colName: 'rowValue2' },
-    { id: 3, colName: 'rowValue3' },
+    { id: Key(), username: 'test@test.com', password }
   ])
 }

@@ -14,7 +14,7 @@ An opinionated API application startup kit with set of best practices.
 
 - [x] Configuration
 - [x] Knex.js
-- [ ] Objection.js
+- [x] Objection.js
 - [ ] Passport.js (incl. local PG user pool)
 - [ ] Kafka Connector
 - [ ] Swagger Integration

@@ -7,6 +7,9 @@ module.exports = {
   debug: true,
   host: '0.0.0.0',
   port: 8000,
+  api: {
+    prefix: '/api'
+  },
   db: {
     client: 'pg',
     connection: {

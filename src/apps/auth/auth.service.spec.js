@@ -1,4 +1,11 @@
-import { afterEach, beforeEach, describe, it, expect } from 'vitest'
+import {
+  afterEach,
+  beforeEach,
+  describe,
+  it,
+  expect
+} from 'vitest'
+
 import Key from '../../db/key.js'
 import { User } from './auth.model.js'
 import { authenticate } from './auth.service.js'

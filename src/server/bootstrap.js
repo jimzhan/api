@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid'
 import Fastify from 'fastify'
 import Passport from '@fastify/passport'
 import SecureSession from '@fastify/secure-session'
-import underPressure from '@fastify/under-pressure'
+import UnderPressure from '@fastify/under-pressure'
 
 export default async (routes) => {
   const server = Fastify({
@@ -15,8 +15,7 @@ export default async (routes) => {
   server.register(SecureSession, config.session)
   server.register(Passport.initialize())
   server.register(Passport.secureSession())
-  server.register(routes)
-  server.register(underPressure, {
+  server.register(UnderPressure, {
     async healthCheck() {
       // @TODO: Add database connection check
       return true
@@ -25,6 +24,7 @@ export default async (routes) => {
     exposeStatusRoute: '/status',
     healthCheckInterval: 5000
   })
+  server.register(routes)
 
   await server.ready()
 
