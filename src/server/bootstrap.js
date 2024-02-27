@@ -5,6 +5,8 @@ import Passport from '@fastify/passport'
 import SecureSession from '@fastify/secure-session'
 import UnderPressure from '@fastify/under-pressure'
 
+import setupGracefulShutdown from './shutdown.js'
+
 export default async (routes) => {
   const server = Fastify({
     logger: true,
@@ -24,7 +26,9 @@ export default async (routes) => {
     exposeStatusRoute: '/status',
     healthCheckInterval: 5000
   })
+
   server.register(routes)
+  setupGracefulShutdown(server, 'SIGTERM', 'SIGINT')
 
   await server.ready()
 
