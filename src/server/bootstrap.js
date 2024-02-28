@@ -7,6 +7,7 @@ import UnderPressure from '@fastify/under-pressure'
 
 import setupGracefulShutdown from './shutdown.js'
 import { store } from './redis.js'
+import { swaggerize } from './plugins/swagger/swagger.js'
 
 export default async (routes) => {
   const server = Fastify({
@@ -15,6 +16,7 @@ export default async (routes) => {
     genReqId: (request) => request.headers['x-trace-id'] || nanoid()
   })
 
+  swaggerize(server)
   server.register(Cookie)
   server.register(Session, Object.assign(config.session, { store }))
   server.register(UnderPressure, {
@@ -31,8 +33,7 @@ export default async (routes) => {
   setupGracefulShutdown(server, 'SIGTERM', 'SIGINT')
 
   await server.ready()
-
-  server.listen({ port: config.port, host: config.host })
+  server.swagger()
 
   return server
 }
