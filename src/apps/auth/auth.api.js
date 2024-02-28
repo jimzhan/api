@@ -6,12 +6,43 @@ export const login = (fastify) => async (request, reply) => {
   return reply.code(status.OK).send({ data: '/login' })
 }
 
-export const authenticate = (fastify) => async (request, reply) => {
-  const { username, password } = request.body
-  const login = await services.authenticate(username, password)
-  if (login.user && login.authenticated) {
-    request.session.user = login.user
-    return reply.code(status.OK).send({ data: login.user })
+export const authenticate = (fastify) => [
+  {
+    schema: {
+      description: 'Login',
+      tags: ['auth'],
+      summary: 'System login with username',
+      body: {
+        type: 'object',
+        required: ['username', 'password'],
+        additionalProperties: false,
+        properties: {
+          username: { type: 'string' },
+          password: { type: 'string' }
+        }
+      },
+      response: {
+        [status.OK]: {
+          type: 'object',
+          properties: {
+            data: {
+              $ref: 'user#'
+            }
+          }
+        },
+        [status.UNAUTHORIZED]: { $ref: 'errorResponseSchema#' }
+      }
+    }
+  },
+  async (request, reply) => {
+    const { username, password } = request.body
+    const login = await services.authenticate(username, password)
+    if (login.user && login.authenticated) {
+      request.session.user = login.user
+      return reply.code(status.OK).send({ data: login.user })
+    }
+    return reply
+      .code(status.UNAUTHORIZED)
+      .send({ code: 'AUTH_001', message: 'Wrong username or password' })
   }
-  return reply.code(status.UNAUTHORIZED).send({ data: 'unauthorized' })
-}
+]
