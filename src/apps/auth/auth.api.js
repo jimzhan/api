@@ -2,6 +2,7 @@ import status from 'http-status-codes'
 import * as services from './auth.service.js'
 
 export const login = (fastify) => async (request, reply) => {
+  request.log.info(`Logged in as: ${request.session.user}`)
   return reply.code(status.OK).send({ data: '/login' })
 }
 

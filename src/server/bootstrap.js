@@ -16,7 +16,7 @@ export default async (routes) => {
   })
 
   server.register(Cookie)
-  server.register(Session, Object.assign({ store, ...config.session }))
+  server.register(Session, Object.assign(config.session, { store }))
   server.register(UnderPressure, {
     async healthCheck() {
       // @TODO: Add database connection check
