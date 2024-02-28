@@ -1,7 +1,4 @@
-const fs = require('fs')
 const path = require('path')
-
-const SecretKey = process.env.SECRET_KEY || 'secret.key'
 
 module.exports = {
   debug: true,

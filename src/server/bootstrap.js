@@ -5,13 +5,16 @@ import Cookie from '@fastify/cookie'
 import Session from '@fastify/session'
 import UnderPressure from '@fastify/under-pressure'
 
-import setupGracefulShutdown from './shutdown.js'
 import { store } from './redis.js'
+import setupGracefulShutdown from './shutdown.js'
+import logger from '../core/winston.js'
 import { swaggerize } from './plugins/swagger/swagger.js'
+import { onRequest, onResponse } from './hooks/context.js'
 
 export default async (routes) => {
   const server = Fastify({
-    logger: true,
+    logger,
+    disableRequestLogging: true,
     requestIdLogLabel: 'traceId',
     genReqId: (request) => request.headers['x-trace-id'] || nanoid()
   })
@@ -29,6 +32,8 @@ export default async (routes) => {
     healthCheckInterval: 5000
   })
 
+  server.addHook('onRequest', onRequest)
+  server.addHook('onResponse', onResponse)
   server.register(routes)
   setupGracefulShutdown(server, 'SIGTERM', 'SIGINT')
 
