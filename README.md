@@ -15,7 +15,7 @@ An opinionated API application startup kit with set of best practices.
 - [x] Configuration
 - [x] Knex.js
 - [x] Objection.js
-- [ ] Passport.js (incl. local PG user pool)
+- [x] Passport.js (incl. local PG user pool)
 - [ ] Kafka Connector
 - [ ] Swagger Integration
 
@@ -40,11 +40,9 @@ The following command generate a secret key for `@fastify/secure-session`.
 ├── src
 │   ├── apps
 │   │   ├── auth
-│   │   │   ├── strategies
-│   │   │   │   ├── auth.db.strategy.js
-│   │   │   │   ├── auth.ad.strategy.js
 │   │   │   ├── auth.api.js                 # Auth API
 │   │   │   ├── auth.service.js             # Auth services
+│   │   │   ├── auth.strategy.js            # Auth strategies (passport.js based)
 │   │   │   └── auth.model.js               # Auth models
 │   │   │   └── index.js                    # Auth routes
 │   │   └── index.js                        # Applications' routes

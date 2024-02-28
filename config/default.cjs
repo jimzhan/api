@@ -30,12 +30,21 @@ module.exports = {
       directory: path.join('db', 'seeds')
     }
   },
+  redis: {
+    host: '127.0.0.1',
+    port: 6379,
+    username: null,
+    password: null,
+    enableAutoPipelining: true
+  },
   session: {
-    sessionName: 'session',
     cookieName: 'sid',
-    key: fs.readFileSync(path.join(__dirname, SecretKey)),
+    sessionName: 'session',
+    secret: process.env.SECRET || 'Jeqrldi6lyFKHtN5O5Sjgx0l2z5KuTH7',
     cookie: {
-      path: '/'
+      expires: 1800000,
+      path: '/',
+      secure: false
     }
   }
 }

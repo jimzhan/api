@@ -1,11 +1,12 @@
 import config from 'config'
 import { nanoid } from 'nanoid'
 import Fastify from 'fastify'
-import Passport from '@fastify/passport'
-import SecureSession from '@fastify/secure-session'
+import Cookie from '@fastify/cookie'
+import Session from '@fastify/session'
 import UnderPressure from '@fastify/under-pressure'
 
 import setupGracefulShutdown from './shutdown.js'
+import { store } from './redis.js'
 
 export default async (routes) => {
   const server = Fastify({
@@ -14,9 +15,8 @@ export default async (routes) => {
     genReqId: (request) => request.headers['x-trace-id'] || nanoid()
   })
 
-  server.register(SecureSession, config.session)
-  server.register(Passport.initialize())
-  server.register(Passport.secureSession())
+  server.register(Cookie)
+  server.register(Session, Object.assign({ store, ...config.session }))
   server.register(UnderPressure, {
     async healthCheck() {
       // @TODO: Add database connection check
