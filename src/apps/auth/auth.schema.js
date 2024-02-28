@@ -1,6 +1,19 @@
 import status from 'http-status-codes'
 
-const schema = {
+const sharedSchemas = [
+  {
+    $id: 'user',
+    type: 'object',
+    properties: {
+      id: { type: 'string' },
+      username: { type: 'string' },
+      createdAt: { type: 'string', format: 'date-time' },
+      updatedAt: { type: 'string', format: 'date-time' }
+    }
+  }
+]
+
+export const authResponse = {
   description: 'Login',
   tags: ['auth'],
   summary: 'System login with username',
@@ -26,4 +39,4 @@ const schema = {
   }
 }
 
-export default schema
+export default sharedSchemas

@@ -1,10 +1,7 @@
 import swagger from '@fastify/swagger'
 import swaggerUi from '@fastify/swagger-ui'
-import schemas from './schemas.js'
 
 export const swaggerize = (fastify) => {
-  schemas.forEach((schema) => fastify.addSchema(schema))
-
   fastify.register(swagger, {
     openapi: {
       info: {
