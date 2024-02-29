@@ -4,7 +4,7 @@ import Cors from '@fastify/cors'
 import Helmet from '@fastify/helmet'
 import Fastify from 'fastify'
 import Cookie from '@fastify/cookie'
-import Session from '@fastify/session'
+import Session from '@mgcrea/fastify-session'
 import UnderPressure from '@fastify/under-pressure'
 
 import { store } from './redis.js'

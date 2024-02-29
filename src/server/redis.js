@@ -1,12 +1,7 @@
 import config from 'config'
 import Redis from 'ioredis'
-import RedisStore from 'connect-redis'
-
-const prefix = `[${process.env.npm_package_name || 'service'}]`
+import RedisStore from '@mgcrea/fastify-session-redis-store'
 
 export const redis = new Redis(config.redis)
 
-export const store = new RedisStore({
-  prefix,
-  client: redis
-})
+export const store = new RedisStore({ client: redis, ttl: config.session.cookie.maxAge })

@@ -39,8 +39,8 @@ module.exports = {
     sessionName: 'session',
     secret: process.env.SECRET || 'Jeqrldi6lyFKHtN5O5Sjgx0l2z5KuTH7',
     cookie: {
-      expires: 1800000,
       path: '/',
+      maxAge: 7200,
       secure: false
     }
   }
