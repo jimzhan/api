@@ -28,7 +28,7 @@ describe('/auth', () => {
     await User.query().findOne({ username }).delete()
   })
 
-  it('/auth/login responds with 200 for correct user', async () => {
+  it('/auth/login responds with 200 for a valid login', async () => {
     const response = await server.inject({
       method: 'POST',
       url: '/auth/login',

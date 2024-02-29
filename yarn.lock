@@ -674,6 +674,11 @@
   resolved "https://registry.yarnpkg.com/@rollup/rollup-win32-x64-msvc/-/rollup-win32-x64-msvc-4.12.0.tgz#9ffdf9ed133a7464f4ae187eb9e1294413fab235"
   integrity sha512-ZYmr5mS2wd4Dew/JjT0Fqi2NPB/ZhZ2VvPp7SmvPZb4Y1CG/LRcS6tcRo2cYU7zLK5A7cdbhWnnWmUjoI4qapg==
 
+"@scalar/fastify-api-reference@^1.17.6":
+  version "1.17.6"
+  resolved "https://registry.yarnpkg.com/@scalar/fastify-api-reference/-/fastify-api-reference-1.17.6.tgz#eee02e19e8d189f325e299b8c7d5b37f31ee14a2"
+  integrity sha512-5qQ0tr4KZcOeRuvQorWo+6AEuGEuF0t5CxIgWWeuPVMaPlDc2VMo5Nf7ib8v1hfx7ZI3gh8qfxxZm1hTWgpDiA==
+
 "@sinclair/typebox@^0.27.8":
   version "0.27.8"
   resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.27.8.tgz#6667fac16c436b5434a387a34dedb013198f6e6e"
@@ -1848,6 +1853,14 @@ fast-uri@^2.0.0, fast-uri@^2.1.0:
   resolved "https://registry.yarnpkg.com/fast-uri/-/fast-uri-2.3.0.tgz#bdae493942483d299e7285dcb4627767d42e2793"
   integrity sha512-eel5UKGn369gGEWOqBShmFJWfq/xSJvsgDzgLYC845GneayWvXBf0lJCBn5qTABfewy1ZDPoaR5OZCP+kssfuw==
 
+fastify-html@^0.3.3:
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/fastify-html/-/fastify-html-0.3.3.tgz#d30588bb83d7d3bd40b89ef808c87bd0e3863ac7"
+  integrity sha512-gXOrdGOd7AWxMMmZl2esd/MgenEn5i9CApO7d6dkXZV/8kNn3/dm/VfkRUfTzvpVJUAsYM2FR+6bYHKcsC8p7w==
+  dependencies:
+    fastify-plugin "^4.5.1"
+    ghtml "^1.0.0"
+
 fastify-plugin@^4.0.0, fastify-plugin@^4.2.1, fastify-plugin@^4.5.1:
   version "4.5.1"
   resolved "https://registry.yarnpkg.com/fastify-plugin/-/fastify-plugin-4.5.1.tgz#44dc6a3cc2cce0988bc09e13f160120bbd91dbee"
@@ -2079,6 +2092,11 @@ getopts@2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/getopts/-/getopts-2.3.0.tgz#71e5593284807e03e2427449d4f6712a268666f4"
   integrity sha512-5eDf9fuSXwxBL6q5HX+dhDj+dslFGWzU5thZ9kNKUkcPtaPdatmUFKwHFrLb/uf/WpA4BHET+AX3Scl56cAjpA==
+
+ghtml@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/ghtml/-/ghtml-1.0.1.tgz#bfd0acfa5d54a85b1353bb3727bcf6431add31a7"
+  integrity sha512-UazsDitjsbxCNksuUINln98LE+YNau/AaLJP752+Hac1zhgnwmwPILKSVaiuJ/ET0XvyQ/j8eEkUXUM10YHvMA==
 
 glob-parent@^6.0.2:
   version "6.0.2"

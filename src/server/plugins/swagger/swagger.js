@@ -31,5 +31,5 @@ export const swaggerize = (fastify) => {
     exposeRoute: true
   })
 
-  fastify.register(swaggerUi, { routePrefix: '/documentation' })
+  fastify.register(swaggerUi, { routePrefix: '/docs' })
 }

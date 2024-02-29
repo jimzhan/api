@@ -5,7 +5,9 @@ module.exports = {
   host: '0.0.0.0',
   port: 8000,
   api: {
-    prefix: '/api'
+    prefix: '/api',
+    title: 'API Docs',
+    version: '0.1.0'
   },
   db: {
     client: 'pg',
