@@ -25,6 +25,7 @@ An opinionated API application startup kit with set of best practices.
 - [x] Swagger Integration
 - [ ] Redis Integration
 - [ ] Kafka Connector
+- [ ] Standard Log
 
 
 ## Bootstrap
