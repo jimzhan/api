@@ -1,6 +1,6 @@
 import status from 'http-status-codes'
 import * as services from './auth.service.js'
-import schema from './auth.schema.js'
+import { authResponse } from './auth.schema.js'
 
 export const login = (fastify) => async (request, reply) => {
   request.log.info(`Logged in as: ${request.session.user}`)
@@ -8,7 +8,7 @@ export const login = (fastify) => async (request, reply) => {
 }
 
 export const authenticate = (fastify) => [
-  { schema },
+  { schema: authResponse },
   async (request, reply) => {
     const { username, password } = request.body
     const login = await services.authenticate(username, password)
