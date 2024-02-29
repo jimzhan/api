@@ -1,5 +1,7 @@
 import config from 'config'
 import { nanoid } from 'nanoid'
+import Cors from '@fastify/cors'
+import Helmet from '@fastify/helmet'
 import Fastify from 'fastify'
 import Cookie from '@fastify/cookie'
 import Session from '@fastify/session'
@@ -31,14 +33,26 @@ export default async (routes) => {
     exposeStatusRoute: '/status',
     healthCheckInterval: 5000
   })
-
+  server.register(Cors)
+  server.register(Helmet, {
+    noCache: true,
+    policy: 'same-origin',
+    contentSecurityPolicy: {
+      useDefaults: true,
+      directives: {
+        imgSrc: ["'self'", 'data:'],
+        scriptSrc: ["'self' 'unsafe-inline'"]
+      }
+    }
+  })
+  // server hooks
   server.addHook('onRequest', onRequest)
   server.addHook('onResponse', onResponse)
   server.register(routes)
-  setupGracefulShutdown(server, 'SIGTERM', 'SIGINT')
 
   await server.ready()
   server.swagger()
+  setupGracefulShutdown(server, 'SIGTERM', 'SIGINT')
 
   return server
 }

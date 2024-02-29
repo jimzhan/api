@@ -2,6 +2,12 @@
 
 An opinionated API application startup kit with set of best practices.
 
+## Prerequisites
+
+- [PostgreSQL](https://www.postgresql.org/)
+- [Redis](https://redis.io/)
+
+
 ## Foundations
 
 - **Configuration** [Config](https://www.npmjs.com/package/config)
@@ -15,9 +21,10 @@ An opinionated API application startup kit with set of best practices.
 - [x] Configuration
 - [x] Knex.js
 - [x] Objection.js
-- [x] Passport.js (incl. local PG user pool)
+- [x] Authentication (with local PG user pool)
+- [x] Swagger Integration
+- [ ] Redis Integration
 - [ ] Kafka Connector
-- [ ] Swagger Integration
 
 
 ## Bootstrap
@@ -41,9 +48,9 @@ The following command generate a secret key for `@fastify/secure-session`.
 │   ├── apps
 │   │   ├── auth
 │   │   │   ├── auth.api.js                 # Auth API
-│   │   │   ├── auth.service.js             # Auth services
-│   │   │   ├── auth.strategy.js            # Auth strategies (passport.js based)
 │   │   │   └── auth.model.js               # Auth models
+│   │   │   ├── auth.service.js             # Auth services
+│   │   │   ├── auth.schema.js              # Auth I/O schema
 │   │   │   └── index.js                    # Auth routes
 │   │   └── index.js                        # Applications' routes
 ```
