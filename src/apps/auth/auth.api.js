@@ -1,4 +1,5 @@
 import status from 'http-status-codes'
+import { login } from './auth.schema.js'
 import * as services from './auth.service.js'
 
 // @TODO better I/O structure & error handling.

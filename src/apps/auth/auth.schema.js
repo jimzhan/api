@@ -1,6 +1,6 @@
 import status from 'http-status-codes'
 
-const schema = {
+export const login = {
   description: 'Login',
   tags: ['auth'],
   summary: 'System login with username',
@@ -25,5 +25,3 @@ const schema = {
     [status.UNAUTHORIZED]: { $ref: 'errorResponseSchema#' }
   }
 }
-
-export default schema
