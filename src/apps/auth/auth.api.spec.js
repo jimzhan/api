@@ -5,7 +5,7 @@ import bootstrap from '../../server/bootstrap.js'
 import routes from '../index.js'
 import Key from '../../db/key.js'
 import { User } from './auth.model.js'
-import * as crypto from '../../core/crypto.js'
+import { encrypt } from '../../core/password.js'
 
 let server
 
@@ -20,7 +20,7 @@ describe('/auth', () => {
   beforeEach(async () => {
     await User.query().insert({
       username,
-      password: await crypto.encrypt(password)
+      password: await encrypt(password)
     })
   })
 

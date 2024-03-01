@@ -1,4 +1,3 @@
-
 export const onRequest = (request, reply, done) => {
   request.log.info({ url: request.raw.url, id: request.id }, 'received request')
   done()

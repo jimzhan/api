@@ -1,11 +1,11 @@
 import config from 'config'
 import { nanoid } from 'nanoid'
-import Cors from '@fastify/cors'
-import Helmet from '@fastify/helmet'
-import Fastify from 'fastify'
-import Cookie from '@fastify/cookie'
-import Session from '@mgcrea/fastify-session'
-import UnderPressure from '@fastify/under-pressure'
+import cors from '@fastify/cors'
+import helmet from '@fastify/helmet'
+import fastify from 'fastify'
+import cookie from '@fastify/cookie'
+import session from '@mgcrea/fastify-session'
+import pressure from '@fastify/under-pressure'
 import swagger from '@fastify/swagger'
 import apirefs from '@scalar/fastify-api-reference'
 
@@ -15,7 +15,7 @@ import logger from '../core/winston.js'
 import { onRequest, onResponse } from './hooks/context.js'
 
 export default async (routes) => {
-  const server = Fastify({
+  const server = fastify({
     logger,
     disableRequestLogging: true,
     requestIdLogLabel: 'traceId',
@@ -23,9 +23,9 @@ export default async (routes) => {
   })
   setupGracefulShutdown(server, 'SIGTERM', 'SIGINT')
 
-  server.register(Cookie)
-  server.register(Session, Object.assign(config.session, { store }))
-  server.register(UnderPressure, {
+  server.register(cookie)
+  server.register(session, Object.assign(config.session, { store }))
+  server.register(pressure, {
     async healthCheck() {
       // @TODO: Add database connection check
       return true
@@ -34,8 +34,8 @@ export default async (routes) => {
     exposeStatusRoute: '/status',
     healthCheckInterval: 5000
   })
-  server.register(Cors)
-  server.register(Helmet, {
+  server.register(cors)
+  server.register(helmet, {
     noCache: true,
     policy: 'same-origin',
     contentSecurityPolicy: {

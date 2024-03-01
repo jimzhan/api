@@ -1,5 +1,5 @@
 import { User } from './auth.model.js'
-import * as crypto from '../../core/crypto.js'
+import { verify } from '../../core/password.js'
 
 /**
  *
@@ -13,7 +13,7 @@ export const authenticate = async (username, password) => {
   const user = await User.query().findOne({ username })
 
   if (user) {
-    const authenticated = await crypto.compare(password, user.password)
+    const authenticated = await verify(user.password, password)
     delete user.password
     Object.assign(login, { user, authenticated })
   }

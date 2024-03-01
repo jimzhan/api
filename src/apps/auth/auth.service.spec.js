@@ -9,7 +9,7 @@ import {
 import Key from '../../db/key.js'
 import { User } from './auth.model.js'
 import { authenticate } from './auth.service.js'
-import * as crypto from '../../core/crypto.js'
+import { encrypt } from '../../core/password.js'
 
 describe('auth.service.spec.js#authenticate()', () => {
   const username = `${Key()}@test.com`
@@ -18,7 +18,7 @@ describe('auth.service.spec.js#authenticate()', () => {
   beforeEach(async () => {
     await User.query().insert({
       username,
-      password: await crypto.encrypt(password)
+      password: await encrypt(password)
     })
   })
 
