@@ -1,10 +1,11 @@
 import status from 'http-status-codes'
-import { login } from './auth.schema.js'
+
+import * as schema from './auth.schema.js'
 import * as services from './auth.service.js'
 
 // @TODO better I/O structure & error handling.
 export default async (fastify) => {
-  fastify.post('/login', async (request, reply) => {
+  fastify.post('/login', { schema: schema.login }, async (request, reply) => {
     const { username, password } = request.body
     const login = await services.authenticate(username, password)
     if (login.user && login.authenticated) {
@@ -13,7 +14,7 @@ export default async (fastify) => {
     }
     return reply
       .code(status.UNAUTHORIZED)
-      .send({ code: 'AUTH_001', message: 'Wrong username or password' })
+      .send({ code: 'login.failed', message: 'Wrong username or password' })
   })
 
   fastify.post('/logout', async (request, reply) => {

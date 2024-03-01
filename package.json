@@ -63,6 +63,7 @@
     "@mgcrea/fastify-session": "^2.2.1",
     "@mgcrea/fastify-session-redis-store": "^1.0.0",
     "@scalar/fastify-api-reference": "^1.17.6",
+    "ajv-errors": "^3.0.0",
     "argon2": "^0.40.1",
     "config": "^3.3.11",
     "cross-env": "^7.0.3",
