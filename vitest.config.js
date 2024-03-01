@@ -10,6 +10,7 @@ export default defineConfig({
       enabled: true,
       provider: 'istanbul',
       include: ['src/**'],
+      exclude: ['src/index.js'],
       reporter: ['text', 'json', 'html']
     }
   }
