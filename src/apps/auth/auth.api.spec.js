@@ -1,3 +1,4 @@
+import config from 'config'
 import status from 'http-status-codes'
 import { describe, beforeAll, afterAll, beforeEach, afterEach, expect, it } from 'vitest'
 
@@ -37,9 +38,9 @@ describe('/auth', () => {
         password
       }
     })
+    const { data } = JSON.parse(response.body)
     expect(response.statusCode).toBe(200)
-    expect(JSON.parse(response.payload).data.username).toEqual(username)
-    expect(isNaN(new Date(JSON.parse(response.payload).data.createdAt))).toBeFalsy()
+    expect(data.next).toEqual(config.urls.home)
   })
 
   it('/auth/logout responds with 202 when logging out', async () => {

@@ -30,7 +30,12 @@ export const login = {
     [status.OK]: {
       type: 'object',
       properties: {
-        data: { type: 'object' }
+        data: {
+          type: 'object',
+          properties: {
+            next: { type: 'string' }
+          }
+        }
       }
     },
     ...errors

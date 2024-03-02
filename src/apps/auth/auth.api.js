@@ -1,16 +1,22 @@
+import config from 'config'
 import status from 'http-status-codes'
 
 import * as schema from './auth.schema.js'
 import * as services from './auth.service.js'
+import { Response } from '../../server/response.js'
 
 // @TODO better I/O structure & error handling.
+// @TODO Error handling
 export default async (fastify) => {
   fastify.post('/login', { schema: schema.login }, async (request, reply) => {
     const { username, password } = request.body
     const login = await services.authenticate(username, password)
+
     if (login.user && login.authenticated) {
       request.session.user = login.user
-      return reply.code(status.OK).send({ data: login.user })
+      return reply
+        .code(status.OK)
+        .send(Response({ next: config.urls.home }))
     }
     return reply
       .code(status.UNAUTHORIZED)

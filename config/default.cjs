@@ -4,6 +4,9 @@ module.exports = {
   debug: true,
   host: '0.0.0.0',
   port: 8000,
+  urls: {
+    home: '/home'
+  },
   api: {
     prefix: '/api',
     title: 'API Docs',
