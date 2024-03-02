@@ -16,29 +16,30 @@ const Error = {
   }
 }
 
-const ValidationError = {
-  type: 'object',
-  properties: {
-    errors: {
-      type: 'array',
-      items: {
-        type: 'object',
-        properties: {
-          code: { type: 'string' },
-          message: { type: 'string' }
-        }
-      }
-    }
-  }
-}
+const ValidationError = Object.assign({
+  description: 'Invalid request'
+}, Error)
+
+const UnauthorizedError = Object.assign({
+  description: 'Unauthorized request'
+}, Error)
+
+const NotFoundError = Object.assign({
+  description: 'Required resource is not found'
+}, Error)
+
+const TooManyRequetsError = Object.assign({
+  description: 'Excessive requests in no time. Please slow down and try again after a bit'
+}, Error)
+
+const InternalServerError = Object.assign({
+  description: 'An error has occurred and we are working on the fix!'
+}, Error)
 
 export const errors = {
   [status.BAD_REQUEST]: ValidationError,
-  [status.UNAUTHORIZED]: Error,
-  [status.NOT_FOUND]: Error,
-  [status.METHOD_NOT_ALLOWED]: Error,
-  [status.UNSUPPORTED_MEDIA_TYPE]: Error,
-  [status.TOO_MANY_REQUESTS]: Error,
-  [status.INTERNAL_SERVER_ERROR]: Error,
-  [status.BAD_GATEWAY]: Error
+  [status.UNAUTHORIZED]: UnauthorizedError,
+  [status.NOT_FOUND]: NotFoundError,
+  [status.TOO_MANY_REQUESTS]: TooManyRequetsError,
+  [status.INTERNAL_SERVER_ERROR]: InternalServerError
 }

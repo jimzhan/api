@@ -28,6 +28,7 @@ export const login = {
   },
   response: {
     [status.OK]: {
+      description: 'Success Login',
       type: 'object',
       properties: {
         data: {
