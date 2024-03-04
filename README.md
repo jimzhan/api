@@ -16,6 +16,7 @@ An opinionated API application startup kit with set of best practices.
 - **SCA** [ESLint](https://eslint.org/) + [StandardJS](https://standardjs.com/)
 - **Logger** [Winston](https://github.com/winstonjs/winston)
 
+
 ## TODOs
 
 - [x] Configuration
@@ -23,16 +24,9 @@ An opinionated API application startup kit with set of best practices.
 - [x] Objection.js
 - [x] Authentication (with local PG user pool)
 - [x] Swagger Integration
-- [ ] Redis Integration
+- [x] Redis Integration
+- [ ] Standard Log (refer to [AWS Logging](https://docs.aws.amazon.com/prescriptive-guidance/latest/logging-monitoring-for-application-owners/event-attributes.html))
 - [ ] Kafka Connector
-- [ ] Standard Log
-
-
-## Bootstrap
-
-The following command generate a secret key for `@fastify/secure-session`.
-
-`yarn genkey`
 
 
 ## Folder Structrure (Grouped by Features)

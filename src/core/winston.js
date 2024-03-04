@@ -4,6 +4,8 @@ import winston from 'winston'
 const basedir = 'logs'
 const service = process.env.npm_package_name || 'backoffice'
 
+// @TODO https://docs.aws.amazon.com/prescriptive-guidance/latest/logging-monitoring-for-application-owners/event-attributes.html
+
 export default winston.createLogger({
   level: 'info',
   // By default winston has verbose level and does not have trace.

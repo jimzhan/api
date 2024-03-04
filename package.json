@@ -5,7 +5,7 @@
   "description": "An opinionated API application boilerplate for Backoffice",
   "main": "index.js",
   "scripts": {
-    "genkey": "./node_modules/@fastify/secure-session/genkey.js > ./config/secret.key",
+    "init": "yarn migrate && yarn seed",
     "migrate": "knex migrate:latest --debug",
     "migrate:make": "knex migrate:make",
     "migrate:up": "knex migrate:up",

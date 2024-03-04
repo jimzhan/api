@@ -25,11 +25,11 @@ const UnauthorizedError = Object.assign({
 }, Error)
 
 const NotFoundError = Object.assign({
-  description: 'Required resource is not found'
+  description: 'Requested resource is not found'
 }, Error)
 
 const TooManyRequetsError = Object.assign({
-  description: 'Excessive requests in no time. Please slow down and try again after a bit'
+  description: 'Excessive requests in no time. Please slow down and try again in a bit'
 }, Error)
 
 const InternalServerError = Object.assign({
