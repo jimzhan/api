@@ -44,8 +44,8 @@ An opinionated API application startup kit with set of best practices.
 │   │   ├── auth
 │   │   │   ├── auth.api.js                 # Auth API
 │   │   │   └── auth.model.js               # Auth models
-│   │   │   ├── auth.service.js             # Auth services
 │   │   │   ├── auth.schema.js              # Auth I/O schema
+│   │   │   ├── auth.service.js             # Auth services
 │   │   │   └── index.js                    # Auth routes
 │   │   └── index.js                        # Applications' routes
 ```

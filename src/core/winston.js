@@ -2,7 +2,6 @@ import path from 'node:path'
 import winston from 'winston'
 
 const basedir = 'logs'
-const service = process.env.npm_package_name || 'backoffice'
 
 // @TODO https://docs.aws.amazon.com/prescriptive-guidance/latest/logging-monitoring-for-application-owners/event-attributes.html
 
@@ -18,7 +17,7 @@ export default winston.createLogger({
     debug: 5
   },
   format: winston.format.json(),
-  defaultMeta: { service },
+  defaultMeta: { service: process.env.npm_package_name },
   transports: [
     new winston.transports.Console(),
     new winston.transports.File({

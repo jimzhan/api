@@ -39,8 +39,20 @@ describe('/auth', () => {
       }
     })
     const { data } = JSON.parse(response.body)
-    expect(response.statusCode).toBe(200)
+    expect(response.statusCode).toBe(status.OK)
     expect(data.next).toEqual(config.urls.home)
+  })
+
+  it('/auth/login with invalid username/password', async () => {
+    const response = await server.inject({
+      method: 'POST',
+      url: '/auth/login',
+      body: {
+        username: `${Key()}@test.com`,
+        password: Key()
+      }
+    })
+    expect(response.statusCode).toBe(status.UNAUTHORIZED)
   })
 
   it('/auth/logout responds with 202 when logging out', async () => {
