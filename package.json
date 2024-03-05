@@ -5,7 +5,9 @@
   "description": "An opinionated API application boilerplate for Backoffice",
   "main": "index.js",
   "scripts": {
-    "init": "yarn migrate && yarn seed",
+    "infra:start": "docker-compose up -d",
+    "infra:stop": "docker-compose stop",
+    "db:init": "yarn migrate && yarn seed",
     "migrate": "knex migrate:latest --debug",
     "migrate:make": "knex migrate:make",
     "migrate:up": "knex migrate:up",

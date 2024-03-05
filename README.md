@@ -2,19 +2,20 @@
 
 An opinionated API application startup kit with set of best practices.
 
+
 ## Prerequisites
 
-- [PostgreSQL](https://www.postgresql.org/)
-- [Redis](https://redis.io/)
+- [Podman](https://podman.io/) for local development
 
 
 ## Foundations
 
 - **Configuration** [Config](https://www.npmjs.com/package/config)
-- **Web Server** [Fastify](https://github.com/fastify/fastify)
-- **Test Runner** [Vitest](https://vitest.dev)
-- **SCA** [ESLint](https://eslint.org/) + [StandardJS](https://standardjs.com/)
+- **Local Infrastruture** [Kafka](https://kafka.apache.org/) + [PostgreSQL@16](https://www.postgresql.org/) + [Redis](https://redis.io/) with [Podman](https://podman.io/)
 - **Logger** [Winston](https://github.com/winstonjs/winston)
+- **SCA** [ESLint](https://eslint.org/) + [StandardJS](https://standardjs.com/)
+- **Test Runner** [Vitest](https://vitest.dev)
+- **Web Server** [Fastify](https://github.com/fastify/fastify)
 
 
 ## TODOs
@@ -27,6 +28,15 @@ An opinionated API application startup kit with set of best practices.
 - [x] Redis Integration
 - [ ] Standard Log (refer to [AWS Logging](https://docs.aws.amazon.com/prescriptive-guidance/latest/logging-monitoring-for-application-owners/event-attributes.html))
 - [ ] Kafka Connector
+
+
+## Bootstrap
+
+```shell
+yarn install
+yarn infra:start
+yarn db:init
+```
 
 
 ## Folder Structrure (Grouped by Features)
