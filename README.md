@@ -26,8 +26,9 @@ An opinionated API application startup kit with set of best practices.
 - [x] Authentication (with local PG user pool)
 - [x] Swagger Integration
 - [x] Redis Integration
-- [ ] Standard Log (refer to [AWS Logging](https://docs.aws.amazon.com/prescriptive-guidance/latest/logging-monitoring-for-application-owners/event-attributes.html))
 - [ ] Kafka Connector
+- [ ] Standard I/O
+- [ ] Standard Log (refer to [AWS Logging](https://docs.aws.amazon.com/prescriptive-guidance/latest/logging-monitoring-for-application-owners/event-attributes.html))
 
 
 ## Bootstrap
