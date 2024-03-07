@@ -1,12 +1,20 @@
 import config from 'config'
 import status from 'http-status-codes'
-import { describe, beforeAll, afterAll, beforeEach, afterEach, expect, it } from 'vitest'
+import {
+  describe,
+  beforeAll,
+  afterAll,
+  beforeEach,
+  afterEach,
+  expect,
+  it
+} from 'vitest'
 
 import bootstrap from '../../server/bootstrap.js'
 import routes from '../index.js'
 import Key from '../../db/key.js'
 import { User } from './auth.model.js'
-import { encrypt } from '../../core/password.js'
+import { encrypt } from '../../core/secret.js'
 
 let server
 

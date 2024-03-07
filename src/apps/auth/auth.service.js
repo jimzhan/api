@@ -1,5 +1,5 @@
 import { User } from './auth.model.js'
-import { verify } from '../../core/password.js'
+import { verify } from '../../core/secret.js'
 
 /**
  *

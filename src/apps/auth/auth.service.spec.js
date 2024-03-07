@@ -9,7 +9,7 @@ import {
 import Key from '../../db/key.js'
 import { User } from './auth.model.js'
 import { authenticate } from './auth.service.js'
-import { encrypt } from '../../core/password.js'
+import { encrypt } from '../../core/secret.js'
 
 describe('auth.service.spec.js#authenticate()', () => {
   const username = `${Key()}@test.com`
