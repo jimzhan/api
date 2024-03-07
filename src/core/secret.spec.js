@@ -9,7 +9,7 @@ describe('secret.js', () => {
     expect(hash).not.toEqual(await secret.encrypt(password))
   })
 
-  it('password#verify()', async () => {
+  it('secret#verify()', async () => {
     const result = await secret.verify(await secret.encrypt(password), password)
     expect(result).toBeTruthy()
   })
