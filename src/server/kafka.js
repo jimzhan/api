@@ -15,10 +15,10 @@ export class Producer {
   }
 
   write(data, partition) {
-    this.stream.write({
+    this.stream.write(Buffer.from(JSON.stringify({
       topic: this.topic,
       partition: partition || this.partition,
-      value: Buffer.from(JSON.stringify(data))
-    })
+      value: JSON.stringify(data)
+    })))
   }
 }
