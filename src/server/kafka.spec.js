@@ -4,8 +4,12 @@ import {
   it
 } from 'vitest'
 
+import { Producer } from './kafka.js'
+
 describe('kafka', async () => {
   it('produce message', async () => {
-    expect(1).toBe(1)
+    const producer = new Producer('order')
+    const result = producer.write({ test: 'test' })
+    expect(result).toBeTruthy()
   })
 })

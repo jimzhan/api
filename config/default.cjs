@@ -32,6 +32,16 @@ module.exports = {
       directory: path.join('db', 'seeds')
     }
   },
+  kafka: {
+    producer: {
+      'metadata.broker.list': '127.0.0.1:9092'
+    },
+    consumer: {
+      'metadata.broker.list': '127.0.0.1:9092',
+      'socket.keepalive.enable': true,
+      'enable.auto.commit': false
+    }
+  },
   redis: {
     host: '127.0.0.1',
     port: 6379,
