@@ -33,13 +33,16 @@ module.exports = {
     }
   },
   kafka: {
-    producer: {
-      'metadata.broker.list': '127.0.0.1:9092'
-    },
-    consumer: {
+    broker: {
+      'client.id': 'backoffice-producer',
       'metadata.broker.list': '127.0.0.1:9092',
       'socket.keepalive.enable': true,
       'enable.auto.commit': false
+    },
+    topic: {
+      'group.id': 'backoffice',
+      'auto.offset.reset': 'earliest',
+      'request.required.acks': 1
     }
   },
   redis: {
