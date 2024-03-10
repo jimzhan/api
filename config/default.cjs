@@ -40,7 +40,7 @@ module.exports = {
       'enable.auto.commit': false
     },
     topic: {
-      'group.id': 'backoffice',
+      'group.id': 'backoffice', // override ME with your actual consumer group id.
       'auto.offset.reset': 'earliest',
       'request.required.acks': 1
     }
