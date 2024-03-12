@@ -1,28 +1,12 @@
 import config from 'config'
 import Kafka from 'node-rdkafka'
-import { Type } from 'avsc'
+import Protobuf from 'protobufjs'
+import Path from 'path'
 
 import logger from '../core/winston.js'
 
-export const Event = Type.forSchema({
-  name: 'Event',
-  type: 'record',
-  fields: [
-    { name: 'topic', type: 'string' },
-    {
-      name: 'value',
-      type: {
-        type: 'map',
-        // multiple types are supported as values type
-        // nested map is supported but needs to be statically defined
-        values: ['string', 'int', 'boolean', { type: 'map', values: ['string', 'int', 'boolean'] }]
-      }
-    },
-    { name: 'partition', type: 'int', default: -1 },
-    // int or long to be used as timestamp
-    { name: 'timestamp', type: 'long', default: Date.now() }
-  ]
-})
+const protoRoot = Protobuf.loadSync(Path.join(__dirname, '/kafka.proto'))
+const Event = protoRoot.lookupType('kafkaproducer.Event')
 
 // @TODO More flexibilities on config (partition & options).
 // @TODO Exceptions handlings.
@@ -75,17 +59,15 @@ export class Producer {
       topic: this.topic,
       timestamp: Date.now()
     }
-    return this.producer.produce(this.topic, -1, Event.toBuffer(payload))
+    return this.producer.produce(this.topic, -1, Event.encode(payload).finish())
   }
 }
 
 export class Consumer {
   constructor(topic) {
     this.topic = topic
-    this.stream = Kafka.Consumer.createReadStream(
-      config.kafka.broker,
-      config.kafka.topic,
-      { topic: this.topic }
-    )
+    this.stream = Kafka.Consumer.createReadStream(config.kafka.broker, config.kafka.topic, {
+      topic: this.topic
+    })
   }
 }

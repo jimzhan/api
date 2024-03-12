@@ -11,7 +11,9 @@ describe('kafka', async () => {
         stringType: 'string-value',
         booleanType: true,
         intType: 10,
-        nestedMap: { intType: 1 }
+        doubleType: 3.14,
+        nestedMap: { intType: 1 },
+        listType: [1, 2, 3]
       })
     ).toBeTruthy()
   })
