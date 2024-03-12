@@ -43,6 +43,10 @@ module.exports = {
       'group.id': 'backoffice', // override ME with your actual consumer group id.
       'auto.offset.reset': 'earliest',
       'request.required.acks': 1
+    },
+    conn: {
+      timeout: 3000,
+      pollInterval: 100
     }
   },
   redis: {
