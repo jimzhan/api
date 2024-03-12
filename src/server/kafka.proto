@@ -1,0 +1,33 @@
+package kafkaproducer;
+syntax = "proto3";
+
+message Event {
+  string topic = 1;
+  map<string, Value> value = 2;
+  int32 partition = 3;
+  int32 timestamp = 4;
+}
+
+message Struct {
+  map<string, Value> fields = 1;
+}
+
+message Value {
+  oneof kind {
+    NullValue null_value = 1;
+    double number_value = 2;
+    int32 int_value = 3;
+    string string_value = 4;
+    bool bool_value = 5;
+    Struct struct_value = 6;
+    ListValue list_value = 7;
+  }
+}
+
+enum NullValue {
+  NULL_VALUE = 0;
+}
+
+message ListValue {
+  repeated Value values = 1;
+}
