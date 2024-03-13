@@ -11,55 +11,68 @@ const Event = protoRoot.lookupType('kafkaproducer.Event')
 // @TODO More flexibilities on config (partition & options).
 // @TODO Exceptions handlings.
 export class Producer {
-  constructor(topic, options) {
+  constructor(topic, producerOptions) {
     this.topic = topic
-    this.producer = new Kafka.Producer({
-      ...config.kafka.broker,
-      ...options
-    })
-    const { timeout, pollInterval } = config.kafka.conn
+    this.stream = Kafka.Producer.createWriteStream(
+      {
+        ...config.kafka.broker,
+        ...producerOptions
+      },
+      {},
+      { topic, connectOptions: config.kafka.conn }
+    )
 
-    let init
-    this.isReady = new Promise((resolve, reject) => {
-      init = { resolve, reject }
-    })
-    this.producer.connect({ timeout }, (err) => {
-      logger.error("Kafka producer didn't connect")
-      if (err) init.reject(err)
-      else init.resolve('Kafka producer initialized')
-    })
-
-    this.producer.on('ready', (_, metadata) => {
-      logger.info('Kafka producer initialized')
-      logger.info(metadata)
-    })
-
-    this.producer.on('event.error', (err) => {
-      logger.error('Error from producer')
+    this.stream.on('error', (err) => {
+      logger.error('Kafka producer stream encountered an error')
       logger.error(err)
     })
 
-    this.producer.on('delivery-report', (err, report) => {
-      logger.info('Kafka delivery report received')
-      logger.error(err)
+    let readiness
+    this.ready = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        reject(new Error('Connection timeouts'))
+      }, config.kafka.conn.timeout)
+      readiness = {
+        resolve: (res) => {
+          this.isReady = true
+          resolve(res)
+        },
+        reject
+      }
+    })
+
+    this.stream.producer.on('ready', (meta) => {
+      logger.info('Producer is ready to produce messages')
+      readiness.resolve()
+    })
+
+    this.stream.producer.on('delivery-report', (err, report) => {
+      if (err) {
+        logger.error('Received an error on delivery report')
+        logger.error(err)
+      }
       logger.info(report)
     })
-
-    this.producer.setPollInterval(pollInterval)
   }
 
-  ready() {
-    return this.isReady
-  }
-
-  write(value, partition = -1) {
+  async write(value, partition = -1) {
+    if (!this.isReady) return Promise.reject(new Error('Producer is not ready'))
     const payload = {
       value,
       partition,
       topic: this.topic,
       timestamp: Date.now()
     }
-    return this.producer.produce(this.topic, -1, Event.encode(payload).finish())
+    return await new Promise((resolve, reject) => {
+      this.stream.write(Buffer.from(Event.encode(payload).finish()), (err) => {
+        if (err) {
+          logger.error('Msg could not be processed')
+          logger.error(err)
+          reject(err)
+        }
+        resolve('success')
+      })
+    })
   }
 }
 

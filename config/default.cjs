@@ -36,8 +36,7 @@ module.exports = {
     broker: {
       'client.id': 'backoffice-producer',
       'metadata.broker.list': '127.0.0.1:9092',
-      'socket.keepalive.enable': true,
-      'enable.auto.commit': false
+      'socket.keepalive.enable': true
     },
     topic: {
       'group.id': 'backoffice', // override ME with your actual consumer group id.
@@ -45,8 +44,7 @@ module.exports = {
       'request.required.acks': 1
     },
     conn: {
-      timeout: 3000,
-      pollInterval: 100
+      timeout: 3000
     }
   },
   redis: {
