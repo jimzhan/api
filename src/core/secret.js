@@ -1,9 +1,11 @@
 import argon2 from 'argon2'
 
 /**
- * @TODO - finalize settings for argon2.
  * Encrypt secret string via bcrypt.
  * @param { String } secret string in plain text to be encrypted.
+ * --------------------------------------------------------------------------------
+ *  **NOTE**
+ *    Available Options: https://github.com/ranisalt/node-argon2/wiki/Options
  */
 export const encrypt = async (secret) => {
   return await argon2.hash(secret, { type: argon2.argon2id })
