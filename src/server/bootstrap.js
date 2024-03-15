@@ -12,8 +12,8 @@ import ajvErrors from 'ajv-errors'
 
 import { store } from './redis.js'
 import logger from '../core/winston.js'
+import * as ctx from './hooks/context.js'
 import setupGracefulShutdown from './shutdown.js'
-import { onRequest, onResponse } from './hooks/context.js'
 
 export default async (routes) => {
   const server = fastify({
@@ -65,8 +65,8 @@ export default async (routes) => {
   })
   server.register(apirefs, { routePrefix: '/docs' })
   // server hooks
-  server.addHook('onRequest', onRequest)
-  server.addHook('onResponse', onResponse)
+  server.addHook('onRequest', ctx.onRequest)
+  server.addHook('onResponse', ctx.onResponse)
   server.register(routes)
 
   await server.ready()
