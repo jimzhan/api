@@ -13,11 +13,8 @@ export const onResponse = (request, reply, done) => {
 }
 
 // eslint-disable-next-line no-unused-vars
-export const preSerialization = async (request, reply, payload, done) => {
+export const preSerialization = async (request, reply, payload) => {
   // @TODO Advanced data structure supports.
-  if (payload instanceof Data) {
-    done({ data: payload.data })
-  } else {
-    done(payload)
-  }
+  request.log.info(payload, 'serialized data')
+  return { data: payload }
 }

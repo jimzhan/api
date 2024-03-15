@@ -1,6 +1,6 @@
 export class Data {
-  constructor(data) {
-    this.data = data
+  static for(data) {
+    return Object.assign({}, { data })
   }
 }
 

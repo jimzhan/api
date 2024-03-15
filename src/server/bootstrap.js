@@ -67,6 +67,7 @@ export default async (routes) => {
   // server hooks
   server.addHook('onRequest', ctx.onRequest)
   server.addHook('onResponse', ctx.onResponse)
+  server.addHook('preSerialization', ctx.preSerialization)
   server.register(routes)
 
   await server.ready()

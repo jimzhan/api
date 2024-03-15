@@ -6,7 +6,8 @@ import * as services from './auth.service.js'
 import { Data } from '../../server/response.js'
 
 // @TODO better I/O structure & error handling.
-// @TODO Error handling
+// @TODO Error handling.
+// @TODO separate route defs & logics.
 export default async (fastify) => {
   fastify.post('/login', { schema: schema.login }, async (request, reply) => {
     const { username, password } = request.body
@@ -16,7 +17,7 @@ export default async (fastify) => {
       request.session.user = login.user
       return reply
         .code(status.OK)
-        .send(Data({ next: config.urls.home }))
+        .send(Data.for({ next: config.urls.home }))
     }
     return reply
       .code(status.UNAUTHORIZED)
