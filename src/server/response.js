@@ -1,6 +1,15 @@
+// @TODO JSON API data spec.
+/**
+ * Data class describes the structure follows a JSON:API document data spec.
+ * @param {object} data: the document’s “primary data”.
+ * @param {object} errors: an array of error objects.
+ * @param {object} meta: a meta object that contains non-standard meta-information.
+ * @param {object} links: a links object related to the primary data (`self`, `next`, `prev`).
+ * The members data and errors MUST NOT coexist in the same document.
+ */
 export class Data {
-  static for(data) {
-    return Object.assign({}, { data })
+  static from(payload) {
+    return { data: payload }
   }
 }
 

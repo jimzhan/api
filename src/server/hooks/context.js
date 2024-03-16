@@ -16,5 +16,5 @@ export const onResponse = (request, reply, done) => {
 export const preSerialization = async (request, reply, payload) => {
   // @TODO Advanced data structure supports.
   request.log.info(payload, 'serialized data')
-  return Data.for(payload)
+  return Data.from(payload)
 }
