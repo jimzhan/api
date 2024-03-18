@@ -4,9 +4,9 @@ import cors from '@fastify/cors'
 import helmet from '@fastify/helmet'
 import fastify from 'fastify'
 import cookie from '@fastify/cookie'
-import session from '@mgcrea/fastify-session'
 import pressure from '@fastify/under-pressure'
 import swagger from '@fastify/swagger'
+import session from '@mgcrea/fastify-session'
 import apirefs from '@scalar/fastify-api-reference'
 import ajvErrors from 'ajv-errors'
 
@@ -19,8 +19,9 @@ export default async (routes) => {
   const server = fastify({
     logger,
     disableRequestLogging: true,
-    requestIdLogLabel: 'traceId',
-    genReqId: (request) => request.headers['x-trace-id'] || nanoid(),
+    requestIdHeader: ctx.requestId,
+    requestIdLogLabel: 'requestId',
+    genReqId: (request) => request.headers[ctx.requestId] || nanoid(),
     ajv: {
       customOptions: {
         jsonPoints: true,
@@ -35,7 +36,7 @@ export default async (routes) => {
   server.register(session, Object.assign(config.session, { store }))
   server.register(pressure, {
     async healthCheck() {
-      // @TODO: Add database connection check
+      // @TODO: Add required health checks here.
       return true
     },
     message: 'Under Pressure 😯',
@@ -60,14 +61,19 @@ export default async (routes) => {
       info: {
         title: config.api.title,
         version: config.api.version
-      }
+      },
+      consumes: ['application/json'],
+      produces: ['application/json']
     }
   })
   server.register(apirefs, { routePrefix: '/docs' })
   // server hooks
   server.addHook('onRequest', ctx.onRequest)
   server.addHook('onResponse', ctx.onResponse)
+  server.addHook('onSend', ctx.onSend)
   server.addHook('preSerialization', ctx.preSerialization)
+
+  // application routes
   server.register(routes)
 
   await server.ready()
