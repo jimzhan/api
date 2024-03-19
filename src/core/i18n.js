@@ -1,16 +1,15 @@
 import { join } from 'node:path'
-
 import config from 'config'
 import i18next from 'i18next'
 import Backend from 'i18next-fs-backend'
-import Middleware from 'i18next-http-middleware'
+import { LanguageDetector, plugin } from 'i18next-http-middleware'
 
 import * as fsx from './fsx.js'
 
 const locales = fsx.dirname(import.meta, '../../locales')
 
 i18next
-  .use(Middleware.LanguageDetector)
+  .use(LanguageDetector)
   .use(Backend)
   .init({
     debug: config.debug,
@@ -22,8 +21,8 @@ i18next
     }
   })
 
-export function register(server) {
-  server.register(Middleware.plugin, { i18next })
+export const bind = (server) => {
+  server.register(plugin, { i18next })
 }
 
-export { i18next as i18n }
+export default i18next

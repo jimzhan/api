@@ -11,8 +11,8 @@ import apirefs from '@scalar/fastify-api-reference'
 import ajvErrors from 'ajv-errors'
 
 import { store } from './redis.js'
+import { bind } from '../core/i18n.js'
 import logger from '../core/winston.js'
-import * as i18n from '../core/i18n.js'
 import * as ctx from './hooks/context.js'
 import setupGracefulShutdown from './shutdown.js'
 
@@ -44,6 +44,7 @@ export default async (routes) => {
     exposeStatusRoute: '/status',
     healthCheckInterval: 5000
   })
+
   server.register(cors)
   server.register(helmet, {
     noCache: true,
@@ -76,7 +77,7 @@ export default async (routes) => {
 
   // application routes & i18n supports
   server.register(routes)
-  //i18n.register(server)
+  bind(server)
 
   await server.ready()
 

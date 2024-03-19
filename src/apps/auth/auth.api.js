@@ -1,7 +1,7 @@
 import config from 'config'
 import status from 'http-status-codes'
 
-import { i18n } from '../../core/i18n.js'
+import i18n from '../../core/i18n.js'
 import * as services from './auth.service.js'
 
 // @TODO better I/O structure & error handling.

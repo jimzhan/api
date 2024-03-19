@@ -14,7 +14,6 @@ export const onResponse = async (request, reply) => {
 
 export const onSend = async (request, reply, payload) => {
   reply.raw.setHeader(requestId, request.id)
-  request.log.info(payload)
   return payload
 }
 

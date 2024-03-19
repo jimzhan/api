@@ -34,7 +34,8 @@ export const login = {
         data: {
           type: 'object',
           properties: {
-            next: { type: 'string' }
+            next: { type: 'string' },
+            message: { type: 'string' }
           }
         }
       }
