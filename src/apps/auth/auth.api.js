@@ -1,6 +1,7 @@
 import config from 'config'
 import status from 'http-status-codes'
 
+import { i18n } from '../../core/i18n.js'
 import * as services from './auth.service.js'
 
 // @TODO better I/O structure & error handling.
@@ -14,7 +15,7 @@ export const login = async (request, reply) => {
     request.session.user = login.user
     return reply
       .code(status.OK)
-      .send({ next: config.urls.home })
+      .send({ next: config.urls.home, message: i18n.t('home') })
   }
   return reply
     .code(status.UNAUTHORIZED)

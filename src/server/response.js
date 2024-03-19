@@ -9,7 +9,14 @@
  */
 export class Data {
   static from(payload) {
-    return { data: payload }
+    const data = {
+      data: payload,
+      meta: payload?.meta,
+      links: payload?.links
+    }
+    delete payload?.meta
+    delete payload?.links
+    return data
   }
 }
 

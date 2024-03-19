@@ -12,6 +12,7 @@ import ajvErrors from 'ajv-errors'
 
 import { store } from './redis.js'
 import logger from '../core/winston.js'
+import * as i18n from '../core/i18n.js'
 import * as ctx from './hooks/context.js'
 import setupGracefulShutdown from './shutdown.js'
 
@@ -73,8 +74,9 @@ export default async (routes) => {
   server.addHook('onSend', ctx.onSend)
   server.addHook('preSerialization', ctx.preSerialization)
 
-  // application routes
+  // application routes & i18n supports
   server.register(routes)
+  //i18n.register(server)
 
   await server.ready()
 
