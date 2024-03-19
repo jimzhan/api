@@ -13,6 +13,8 @@ export const login = async (request, reply) => {
 
   if (login.user && login.authenticated) {
     request.session.user = login.user
+    // @TODO move into session based
+    i18n.changeLanguage(request.language)
     return reply
       .code(status.OK)
       .send({ next: config.urls.home, message: i18n.t('home') })

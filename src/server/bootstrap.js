@@ -4,6 +4,7 @@ import cors from '@fastify/cors'
 import helmet from '@fastify/helmet'
 import fastify from 'fastify'
 import cookie from '@fastify/cookie'
+import accepts from '@fastify/accepts'
 import pressure from '@fastify/under-pressure'
 import swagger from '@fastify/swagger'
 import session from '@mgcrea/fastify-session'
@@ -34,6 +35,7 @@ export default async (routes) => {
   setupGracefulShutdown(server, 'SIGTERM', 'SIGINT')
 
   server.register(cookie)
+  server.register(accepts)
   server.register(session, Object.assign(config.session, { store }))
   server.register(pressure, {
     async healthCheck() {
