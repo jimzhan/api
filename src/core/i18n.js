@@ -1,7 +1,8 @@
-import { join } from 'node:path'
 import config from 'config'
 import i18next from 'i18next'
 import Backend from 'i18next-fs-backend'
+import { join } from 'node:path'
+import { readdirSync, lstatSync } from 'node:fs'
 import { LanguageDetector, plugin } from 'i18next-http-middleware'
 
 import * as fsx from './fsx.js'
@@ -14,10 +15,16 @@ i18next
   .init({
     debug: config.debug,
     initImmediate: false,
-    fallbackLng: 'en-us',
-    preload: ['en-us', 'zh-cn'],
+    fallbackLng: 'en',
+    preload: readdirSync(locales).filter((fileName) => {
+      const langdir = join(locales, fileName)
+      console.log('=================================')
+      console.log(`Lang dir: ${langdir}`)
+      return lstatSync(langdir).isDirectory()
+    }),
     backend: {
-      loadPath: join(locales, '{{ lng }}/message.json')
+      loadPath: join(locales, '{{ lng }}/message.json'),
+      addPath: join(locales, '{{ lng }}/message.json')
     }
   })
 
