@@ -16,6 +16,7 @@ An opinionated API application startup kit with set of best practices.
 - **SCA** [ESLint](https://eslint.org/) + [StandardJS](https://standardjs.com/)
 - **Test Runner** [Vitest](https://vitest.dev)
 - **Web Server** [Fastify](https://github.com/fastify/fastify)
+- **i18n** [i18next](https://www.i18next.com/)
 
 
 ## TODOs
@@ -28,7 +29,7 @@ An opinionated API application startup kit with set of best practices.
 - [x] Redis Integration
 - [x] Kafka Connector
 - [x] Standard I/O
-- [ ] i18n Support
+- [x] i18n Support
 - [ ] Standard Log (refer to [AWS Logging](https://docs.aws.amazon.com/prescriptive-guidance/latest/logging-monitoring-for-application-owners/event-attributes.html))
 
 
@@ -44,13 +45,14 @@ yarn db:init
 ## Folder Structrure (Grouped by Features)
 
 ```bash
-├── config
+├── config                                 # Configuration
 │   ├── default.cjs
 │   ├── production.cjs
 │   └── test.cjs
-├── db
-│   ├── migrations
-│   ├── seeds
+├── locales                                # i18n languages' supports
+├── logs                                   # Combined log folder
+├── migrations                             # Database migrations
+├── seeds                                  # Database seeds
 ├── src
 │   ├── apps
 │   │   ├── auth
