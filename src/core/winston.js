@@ -1,7 +1,9 @@
 import path from 'node:path'
 import winston from 'winston'
 
-const basedir = 'logs'
+import * as fsx from './fsx.js'
+
+const basedir = fsx.dirname(import.meta, '../../logs')
 
 // @TODO https://docs.aws.amazon.com/prescriptive-guidance/latest/logging-monitoring-for-application-owners/event-attributes.html
 
