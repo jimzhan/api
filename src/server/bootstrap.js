@@ -11,8 +11,8 @@ import session from '@mgcrea/fastify-session'
 import apirefs from '@scalar/fastify-api-reference'
 import ajvErrors from 'ajv-errors'
 
+import i18n from '../core/i18n.js'
 import { store } from './redis.js'
-import { bind } from '../core/i18n.js'
 import logger from '../core/winston.js'
 import * as ctx from './hooks/context.js'
 import setupGracefulShutdown from './shutdown.js'
@@ -79,7 +79,7 @@ export default async (routes) => {
 
   // application routes & i18n supports
   server.register(routes)
-  bind(server)
+  i18n.bind(server)
 
   await server.ready()
 

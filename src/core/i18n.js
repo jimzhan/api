@@ -7,7 +7,13 @@ import { LanguageDetector, plugin } from 'i18next-http-middleware'
 
 import * as fsx from './fsx.js'
 
-const locales = fsx.dirname(import.meta, '../../locales')
+const basedir = fsx.dirname(import.meta, '../../i18n')
+
+// @TODO - custom language detector & session based `accept-language`.
+
+// @FIXME i18next::backendConnector:
+//  loading namespace translation for language en failed Error:
+//    ENOENT: no such file or directory, open './i18n/en/message.json'
 
 i18next
   .use(LanguageDetector)
@@ -15,20 +21,18 @@ i18next
   .init({
     debug: config.debug,
     initImmediate: false,
-    fallbackLng: 'en',
-    preload: readdirSync(locales).filter((fileName) => {
-      const langdir = join(locales, fileName)
-      console.log('=================================')
-      console.log(`Lang dir: ${langdir}`)
+    fallbackLng: 'en-us',
+    preload: readdirSync(basedir).filter((filename) => {
+      const langdir = join(basedir, filename)
       return lstatSync(langdir).isDirectory()
     }),
     backend: {
-      loadPath: join(locales, '{{ lng }}/message.json'),
-      addPath: join(locales, '{{ lng }}/message.json')
+      loadPath: join(basedir, '{{ lng }}/message.json'),
+      addPath: join(basedir, '{{ lng }}/message.json')
     }
   })
 
-export const bind = (server) => {
+Object.getPrototypeOf(i18next).bind = (server) => {
   server.register(plugin, { i18next })
 }
 
