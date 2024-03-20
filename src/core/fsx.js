@@ -15,3 +15,8 @@ export const dirname = (meta, ...segments) => {
   const here = path.dirname(filename(meta))
   return segments.length > 0 ? path.join(here, ...segments) : here
 }
+
+/**
+ * Direct shortcuts to `path.join`.
+ */
+export const join = path.join
