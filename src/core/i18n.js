@@ -6,7 +6,7 @@ import { LanguageDetector, plugin } from 'i18next-http-middleware'
 
 import * as fsx from './fsx.js'
 
-const basedir = fsx.dirname(import.meta, '../../i18n')
+const basedir = fsx.dirname(import.meta, '../../locales')
 
 i18next
   .use(Backend)
@@ -30,9 +30,8 @@ i18next
       ignoreCase: true,
       // keys or params to lookup language from
       lookupCookie: 'lang',
-      lookupHeader: 'accept-language',
-      lookupHeaderRegex: /(([a-z]{2})-?([A-Z]{2})?)\s*;?\s*(q=([0-9.]+))?/gi,
-      lookupSession: 'lang'
+      lookupSession: 'lang',
+      lookupHeader: 'accept-language'
     }
   })
 

@@ -1,5 +1,3 @@
-const path = require('path')
-
 module.exports = {
   debug: true,
   host: '0.0.0.0',
@@ -26,10 +24,10 @@ module.exports = {
       max: 10
     },
     migrations: {
-      directory: path.join('db', 'migrations')
+      directory: 'migrations'
     },
     seeds: {
-      directory: path.join('db', 'seeds')
+      directory: 'seeds'
     }
   },
   kafka: {

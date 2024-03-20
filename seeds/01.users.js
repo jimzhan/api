@@ -1,5 +1,5 @@
-import Key from '../../src/db/key.js'
-import { encrypt } from '../../src/core/secret.js'
+import Key from '../src/db/key.js'
+import { encrypt } from '../src/core/secret.js'
 
 const tableName = 'users'
 const password = await encrypt('password')
