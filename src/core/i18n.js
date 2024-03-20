@@ -6,10 +6,6 @@ import { LanguageDetector, plugin } from 'i18next-http-middleware'
 
 import * as fsx from './fsx.js'
 
-// @TODO - custom language detector & session based `accept-language`.
-// @FIXME i18next::backendConnector:
-//  loading namespace translation for language en failed Error:
-//    ENOENT: no such file or directory, open './i18n/en/message.json'
 const basedir = fsx.dirname(import.meta, '../../i18n')
 
 i18next
