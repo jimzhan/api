@@ -27,7 +27,7 @@
     "seed": "knex seed:run",
     "lint": "prettier --write src && eslint src",
     "lint:fix": "yarn lint --fix",
-    "secret": "npx nanoid --size 32",
+    "secret": "npx nanoid --size",
     "start": "cross-env NODE_ENV=production node src/index.js",
     "watch": "cross-env NODE_ENV=development nodemon src/index.js",
     "test": "cross-env NODE_ENV=test vitest run --coverage --pool=forks"
@@ -50,9 +50,6 @@
   "homepage": "https://github.com/jimzhan/api#readme",
   "engines": {
     "node": "^18.18 || ^20.8"
-  },
-  "resolutions": {
-    "string-width": "4.2.3"
   },
   "peerDependencies": {
     "fastify-plugin": "^4.0.0"

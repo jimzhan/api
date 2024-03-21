@@ -10,7 +10,7 @@ import {
   it
 } from 'vitest'
 
-import bootstrap from '../../server/bootstrap.js'
+import node from '../../server/node.js'
 import routes from '../index.js'
 import Key from '../../db/key.js'
 import { User } from './auth.model.js'
@@ -19,7 +19,7 @@ import { encrypt } from '../../core/secret.js'
 let server
 
 beforeAll(async () => {
-  server = await bootstrap(routes)
+  server = await node(routes)
 })
 
 describe('/auth', () => {

@@ -1,3 +1,6 @@
 {
-  "home": "Home"
+  "home": "Home",
+  "login": {
+    "invalid": "The username or password is incorrect"
+  }
 }

@@ -1,6 +1,9 @@
 import config from 'config'
-import bootstrap from './server/bootstrap.js'
+import node from './server/node.js'
 import routes from './apps/index.js'
 
-const server = await bootstrap(routes)
-server.listen({ port: config.port, host: config.host })
+const server = await node(routes)
+server.listen({
+  host: config.host,
+  port: config.port
+})
