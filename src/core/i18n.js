@@ -25,10 +25,8 @@ i18next
       loadPath: fsx.join(basedir, '{{ lng }}/{{ ns }}.json')
     },
     detection: {
-      // order and from where user language should be detected.
-      order: ['cookie', 'session', 'header'],
+      order: ['header', 'cookie', 'session'],
       ignoreCase: true,
-      // keys or params to lookup language from
       lookupCookie: 'lang',
       lookupSession: 'lang',
       lookupHeader: 'accept-language'
